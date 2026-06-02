@@ -1,4 +1,4 @@
-export * from "./portfolio-overview";
+
 export * from "./software-section";
 
 export * from "./hero-section";

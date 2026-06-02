@@ -1,5 +1,5 @@
 import {
-  PortfolioOverview,
+ 
   SoftwareSection,
   HeroSection,
   DigitalMarketingSolutions,
@@ -13,7 +13,7 @@ export default function Home() {
       <WeProviderTheBestServiceSlider />
       <DigitalMarketingSolutions />
       <SoftwareSection />
-      <PortfolioOverview />
+      {/* <PortfolioOverview /> */}
       <div className="mt-64"></div>
     </>
   );
