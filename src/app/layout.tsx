@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
+import "@radix-ui/themes/styles.css";
+// import global style
+import "./styles/globals.css";
+import "./styles/landing-page.style.css";
+import { Theme } from "@radix-ui/themes";
+import { ThemeProvider } from "next-themes";
+import { HeaderProvider } from "@/components/core/header";
+import { GlobalProvider } from "@/components/globalProvider";
 
-const geistSans = Geist({
+
+
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
 });
-
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -23,11 +31,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <ThemeProvider attribute="class">
+          <Theme
+            accentColor="blue"
+            grayColor="slate"
+            appearance="inherit"
+            hasBackground={false}
+          >
+            <GlobalProvider>
+
+            <HeaderProvider />
+            {children}
+            </GlobalProvider>
+          </Theme>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
