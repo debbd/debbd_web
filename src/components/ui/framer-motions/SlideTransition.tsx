@@ -15,8 +15,8 @@ export const SlideTransition = ({
   children,
   id,
   direction,
-  duration = 0.19,
-  distance = 20,
+  duration = 0.10,
+  distance = 10,
 }: SlideTransitionProps) => {
   const customVariants = {
     initial: (dir: number) => ({ opacity: 0, x: dir * distance }),

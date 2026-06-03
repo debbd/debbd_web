@@ -30,7 +30,7 @@ export const HeroSection = () => {
           Reach
         </p>
         <div className="mt-5 flex items-center justify-start gap-4 ">
-          <div className="border-brdcolor-800C flex w-fit shrink-0 max-[540px]:shrink items-center justify-center gap-2 overflow-hidden rounded-full border p-0.5 pr-1">
+          <div className="border-brdcolor-800C flex w-fit shrink-0 max-[540px]:shrink items-center justify-center gap-2 overflow-hidden rounded-full border p-0.5 pr-1 max-[540px]:p-0 ">
             <input
               type="text"
               placeholder="youremail@gmail.com"
