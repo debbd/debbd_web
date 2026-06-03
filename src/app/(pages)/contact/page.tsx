@@ -17,20 +17,24 @@ export default function ContactPage() {
         <div className='w-full'>
 
             <GridBackground />
+            <div className='w-full px-5'>
 
-            <div className='max-w-[900px] mx-auto h-[500px] mt-[64px] pt-32 '>
-                <h1 className='default-heading-size text-center w-full'>Contact Our Team</h1>
-                <p className='w-full text-center text-read-16 font-medium text-foreground-2 mt-5 max-w-[600px] w-full mx-auto'>Have a project in mind? Contact our team to discuss software development, SEO, digital marketing, and business growth solutions.</p>
 
-                <div className='mt-28 w-full flex justify-center items-start pb-20 gap-16'>
-                    <div className='w-full '>
-                        <ContactForm />
-                    </div>
-                    <div className='max-w-[400px] w-full  '>
-                        <ContactDetailsLinks />
+                <div className='max-w-[900px] mx-auto h-[500px] mt-[64px] pt-32 '>
+                    <h1 className='default-heading-size text-center w-full'>Contact Our Team</h1>
+                    <p className='w-full text-center text-read-16 font-medium text-foreground-2 mt-5 max-w-[600px] w-full mx-auto max-[900px]:text-read-15'>Have a project in mind? Contact our team to discuss software development, SEO, digital marketing, and business growth solutions.</p>
+
+                    <div className='mt-28 w-full flex justify-center items-start pb-20 gap-16 max-[900px]:flex-col'>
+                        <div className='w-full '>
+                            <ContactForm />
+                        </div>
+                        <div className='max-w-[400px] w-full  '>
+                            <ContactDetailsLinks />
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }

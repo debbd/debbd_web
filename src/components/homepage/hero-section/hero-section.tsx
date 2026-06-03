@@ -13,8 +13,8 @@ export const HeroSection = () => {
     <div className=" global-layout-width relative mx-auto w-full overflow-hidden">
       <HeroBgDesign />
 
-      <div className="mt-40 w-full px-5">
-        <h1 className="text-read-56 leading-14 font-550">
+      <div className="mt-40 w-full px-5 max-[540px]:mt-32">
+        <h1 className="text-read-56 leading-14 font-550 max-[900px]:text-read-48 max-[900px]:leading-12 max-[560px]:text-read-36 max-[560px]:leading-10">
           Ready to take
           <br />
           your
@@ -25,19 +25,19 @@ export const HeroSection = () => {
           <br />
           to the next level?
         </h1>
-        <p className="text-read-18 mt-5 font-[450] text-foreground-4">
+        <p className="text-read-18 mt-5 font-[450] text-foreground-4 max-[900px]:text-read-16">
           Our vision is to revolutionize the way brands and advertisers target.
           Reach
         </p>
-        <div className="mt-5 flex items-center justify-start gap-4">
-          <div className="border-brdcolor-800C flex w-fit shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full border p-0.5 pr-1">
+        <div className="mt-5 flex items-center justify-start gap-4 ">
+          <div className="border-brdcolor-800C flex w-fit shrink-0 max-[540px]:shrink items-center justify-center gap-2 overflow-hidden rounded-full border p-0.5 pr-1">
             <input
               type="text"
               placeholder="youremail@gmail.com"
-              className="placeholder:text-foreground-3 text-read-15 w-full max-w-[300px] border-none px-3 py-2.5 font-medium outline-none placeholder:font-normal"
+              className="placeholder:text-foreground-3 text-read-15 w-full max-w-[300px] border-none px-3 py-2.5 font-medium outline-none placeholder:font-normal max-[900px]:py-2 max-[540px]:hidden"
             />
             <Button
-              className="!text-read-15 !text-default-white mr-1 shrink-0 !cursor-pointer !bg-blue-600 !px-5 !py-5 !font-medium !transition-colors hover:!bg-blue-700"
+              className="!text-read-15 !text-default-white mr-1 shrink-0 !cursor-pointer !bg-blue-600 !px-5 !py-5 !font-medium !transition-colors hover:!bg-blue-700 max-[900px]:py-4.5!"
               radius="full"
             >
               Book a meeting
@@ -46,15 +46,15 @@ export const HeroSection = () => {
           <Button
             variant="surface"
             radius="full"
-            className="!text-read-15 mr-1 shrink-0 !cursor-pointer !px-5 !py-5 !font-medium !transition-colors"
+            className="!text-read-15 mr-1 shrink-0 !cursor-pointer !px-5 !py-5 max-[900px]:py-4.5! !font-medium !transition-colors"
           >
             Our Works
           </Button>
         </div>
       </div>
 
-      <div className="px-5 mt-20 mb-40">
-        <div className="flex justify-start items-start gap-10 w-fit">
+      <div className="px-5 mt-20 mb-40 max-[900px]:mb-28 max-[540px]:mt-14 max-[540px]:mb-14">
+        <div className="flex justify-start items-start gap-10 w-fit max-[900px]:flex-col max-[900px]:gap-5!">
           <p className="text-read-14 text-foreground-4 shrink-0 font-medium">
             Trusted by industry leaders <br />
             Loved by customers
@@ -62,7 +62,7 @@ export const HeroSection = () => {
 
           <Separator
             orientation="vertical"
-            className="!w-[1px] !h-[60px] !bg-background-800C"
+            className="!w-[1px] !h-[60px] !bg-background-800C max-[900px]:h-[1px]! max-[900px]:w-full! max-[900px]:hidden"
           />
 
           <div className="w-fit">
@@ -99,7 +99,7 @@ export const HeroSection = () => {
           </div>
           <Separator
             orientation="vertical"
-            className="!w-[0.5px] !h-[60px] !bg-background-800C"
+            className="!w-[0.5px] !h-[60px] !bg-background-800C max-[900px]:h-[1px]! max-[900px]:w-full! max-[900px]:hidden"
           />
           <div>
             <div className="flex justify-start items-center gap-2">
@@ -115,10 +115,10 @@ export const HeroSection = () => {
             </p>
           </div>
         </div>
-        <div className="w-full mt-6 overflow-hidden max-w-[700px] relative">
+        <div className="w-full mt-6 overflow-hidden max-w-[700px] relative max-[900px]:mt-[200px] max-[540px]:mt-[400px]">
           <div className="w-[80px] h-full absolute top-0 left-0 z-10 bg-gradient-to-l from-transparent to-background-950C"></div>
           <div className="w-[80px] h-full absolute top-0 right-0 z-10 bg-gradient-to-r from-transparent to-background-950C"></div>
-          <div className="company_logo_marquee justify-start items-center shrink-0">
+          <div className="company_logo_marquee justify-start items-center shrink-0 ">
             {Array.from({ length: 2 }).map((_, j) => {
               return COMPANY_IMAGES.map((image, i) => {
                 return (

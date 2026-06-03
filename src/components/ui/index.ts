@@ -5,6 +5,7 @@ export * from "./code";
 export * from "./separator";
 export * from "./textarea";
 export * from "./field";
+export * from "./sheet";
 export * from "./combobox";
 export * from "./navigation-menu";
 export * from "./dialog";

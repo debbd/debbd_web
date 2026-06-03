@@ -1,14 +1,14 @@
 
-import { getServices } from "@/lib/getServices";
+import { getServices, ServiceItem } from "@/lib/getServices";
 import { Button } from "@radix-ui/themes";
 import { Gem } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 
-export const ServicesMegaMenu = async () => {
-  const services = await getServices()
-  console.log(services)
+export const ServicesMegaMenu = ({services}: {services: ServiceItem[]} ) => {
+  
+
   return (
     <div className="secondary-layout-width w-full mx-auto h-[550px] flex justify-center items-start px-5 max-[774px]:flex-col">
       <div className="w-full p-2 h-full">

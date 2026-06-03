@@ -10,9 +10,9 @@ export const WeProviderTheBestServiceSlider = () => {
   const { swiperRef } = useSwiperManager();
   const [slideIndex, setSlideIndex] = useState<number>(0);
   return (
-    <div className="from-background-925C w-full bg-gradient-to-b to-background-950C py-32 px-5">
+    <div className="from-background-925C w-full bg-gradient-to-b to-background-950C py-32 px-5 max-[670px]:py-20">
       <div className="secondary-layout-width mx-auto">
-        <div className="flex justify-start items-center">
+        <div className="flex justify-start items-center max-[860px]:justify-center">
           <Badge
             radius="full"
             color="gold"
@@ -22,8 +22,8 @@ export const WeProviderTheBestServiceSlider = () => {
             <span>Services</span>
           </Badge>
         </div>
-        <div className="flex justify-between items-center">
-          <h2 className="text-read-56 leading-[60px] text-left font-530 text-foreground mt-5 shrink-0">
+        <div className="flex justify-between items-center max-[860px]:flex-col max-[860px]:gap-3">
+          <h2 className="text-read-56 leading-[60px] text-left font-530 text-foreground mt-5 shrink-0 max-[540px]:shrink  max-[900px]:text-read-48 max-[860px]:text-center max-[900px]:leading-12 max-[560px]:text-read-36 max-[560px]:leading-10">
             We Provide The <br /> Effective Services
           </h2>
 
@@ -57,7 +57,7 @@ export const WeProviderTheBestServiceSlider = () => {
             onSlideChange={(swiper) => {
               setSlideIndex(swiper.realIndex);
             }}
-            className="h-[400px]  bg-background-900C cursor-grab w-full active:cursor-grabbing border mt-5 border-brdcolor-800C rounded-30C"
+            className="h-[400px] max-[560px]:h-[300px] bg-background-900C cursor-grab w-full active:cursor-grabbing border mt-5 border-brdcolor-800C rounded-30C"
           >
             {SERVICE_SHOW_UP_DATA.map((item, i) => {
               return (
@@ -66,10 +66,10 @@ export const WeProviderTheBestServiceSlider = () => {
                   className=" !flex justify-center items-center p-5 "
                 >
                   <div className="max-w-[700px] w-full">
-                    <h3 className="text-read-36 font-medium text-left">
+                    <h3 className="text-read-36 font-medium text-left max-[860px]:text-center max-[560px]:text-read-24">
                       {item.title}
                     </h3>
-                    <p className="text-read-16 text-foreground-2 mt-1 text-left">
+                    <p className="text-read-16 text-foreground-2 mt-1 text-left max-[860px]:text-center max-[560px]:text-read-15">
                       {item.desc}
                     </p>
                   </div>

@@ -69,7 +69,7 @@ export const ContactForm = () => {
             </Field>
 
             <Field>
-                <Button variant="surface" color="blue" size={"2"}>Send Message</Button>
+                <Button variant="surface" color="blue" size={"2"} radius="large">Send Message</Button>
             </Field>
 
         </FieldGroup>

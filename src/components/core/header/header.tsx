@@ -13,6 +13,8 @@ import {
 import { ServicesMegaMenu } from "./services.megamenu"
 import { HeaderAuthButtons } from "./HeaderAuthButtons";
 import { CompanyMegaMenu } from "./company.megamenu";
+import { MobileMenu } from "./MobileMenu";
+import { getServices } from "@/lib/getServices";
 
 type HeaderLinkType = {
   label: string;
@@ -36,8 +38,9 @@ const HEADER_LINKS: HeaderLinkType[] = [
   },
 ];
 
-export const Header = () => {
+export const Header = async () => {
   const navMenuTriggerStyle = navigationMenuTriggerStyle();
+  const services = await getServices()
   return (
     <header className="fixed top-0 left-0 h-[64px] z-[9999999999999999999] w-full backdrop-blur-3xl">
       <div className="global-layout-width default-px mx-auto flex h-full items-center justify-center">
@@ -51,7 +54,7 @@ export const Header = () => {
               alt="Debbd"
             />
           </Link>
-          <nav>
+          <nav className="max-[900px]:hidden!">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -59,7 +62,7 @@ export const Header = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="!rounded-15C">
-                    <ServicesMegaMenu />
+                    <ServicesMegaMenu services={services} />
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
@@ -90,7 +93,11 @@ export const Header = () => {
             </NavigationMenu>
           </nav>
         </div>
-        <HeaderAuthButtons />
+        <div className="shrink-0 max-[900px]:hidden!">
+          <HeaderAuthButtons />
+        </div>
+
+        <MobileMenu services={services} />
       </div>
     </header>
   );
