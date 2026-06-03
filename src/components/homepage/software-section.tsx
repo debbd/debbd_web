@@ -3,6 +3,7 @@ import { Badge, Button } from "@radix-ui/themes";
 import { Code, Phone } from "lucide-react";
 import Image from "next/image";
 import { SOFTWARE_SERVICE_DETAILS } from "@/constants";
+import Link from "next/link";
 
 export const SoftwareSection = () => {
   return (
@@ -31,7 +32,7 @@ export const SoftwareSection = () => {
         <div className="w-full h-[400px] max-[1000px]:h-fit flex justify-center items-center gap-5 mt-16 max-[1000px]:mt-5 max-[1000px]:flex-col max-[1000px]:justify-start">
           <div className="w-[350px] overflow-hidden h-full shrink-0 relative max-[1000px]:w-full max-[1000px]:shrink">
             <div className="w-full h-full rounded-[25px] overflow-hidden relative ">
-              
+
               <h3 className="text-read-24 font-medium mt-5 text-purple-500 max-[1000px]:text-center">
                 AI Powered Solutions
               </h3>
@@ -41,22 +42,23 @@ export const SoftwareSection = () => {
                 <li>Mobile Apps</li>
               </ul>
               <div className="max-[1000px]:flex max-[1000px]:justify-center">
-
-              <Button variant="soft" color="purple" radius="full" size={"3"} >
-               <Phone size={18} /> Talk To Us
-              </Button>
+                <Link target="_blank" href={"https://wa.me/8801958909334?text=Hello%2C%20I%20want%20to%20discuss%20a%20project"}>
+                  <Button variant="soft" color="purple" radius="full" size={"3"} >
+                    <Phone size={18} /> Talk To Us
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
           <div className="w-full h-full  rounded-3xl overflow-hidden max-[1000px]:h-[400px] max-[1000px]:shrink-0 max-[670px]:h-[300px] max-[490px]:h-[250px]">
-            
-             <Image
-                    src={"/images/homepage/sass-template.png"}
-                    width={900}
-                    height={500}
-                    className="object-cover object-center w-full h-full"
-                    alt="sass-template"
-                  />
+
+            <Image
+              src={"/images/homepage/sass-template.png"}
+              width={900}
+              height={500}
+              className="object-cover object-center w-full h-full"
+              alt="sass-template"
+            />
           </div>
         </div>
 

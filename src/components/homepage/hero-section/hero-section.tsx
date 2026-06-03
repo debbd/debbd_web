@@ -59,13 +59,15 @@ export const HeroSection = () => {
               Book a meeting
             </Button>
           </div>
+          <Link href="/portfolio">
           <Button
             variant="surface"
             radius="full"
             className="!text-read-15 mr-1 shrink-0 !cursor-pointer !px-5 !py-5 max-[900px]:py-4.5! !font-medium !transition-colors"
-          >
+            >
             Our Works
           </Button>
+            </Link>
         </div>
       </div>
 
