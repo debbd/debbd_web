@@ -53,7 +53,7 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      <div className="px-5 mt-20 mb-40 max-[900px]:mb-28 max-[540px]:mt-14 max-[540px]:mb-14">
+      <div className="px-5 mt-20 mb-40 max-[900px]:mb-28 max-[540px]:mt-14 max-[540px]:mb-14 max-[540px]:relative max-[540px]:z-[9999]">
         <div className="flex justify-start items-start gap-10 w-fit max-[900px]:flex-col max-[900px]:gap-5!">
           <p className="text-read-14 text-foreground-4 shrink-0 font-medium">
             Trusted by industry leaders <br />

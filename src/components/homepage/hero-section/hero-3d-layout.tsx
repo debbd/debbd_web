@@ -9,7 +9,7 @@ export const Hero3DLayout = () => {
     <div className="w-full">
       <div className="hero_image_wrapper ">
         <div className="hero_canvas   p-1 ">
-          <div className="w-full h-full rounded-tiny hero_canvas_image  relative">
+          <div className="w-full h-full rounded-tiny hero_canvas_image  relative ">
             <div className="w-full h-full rounded-tiny  relative ">
               <div className="w-full h-[400px] hero_3d_main_box mt-32 p-2 relative bg-background-950C/20">
                 <div className="absolute w-[700px] h-[1px] bg-background-900C top-0 left-1/2 -translate-x-1/2"></div>

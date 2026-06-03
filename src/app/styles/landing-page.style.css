@@ -69,4 +69,7 @@
   .hero_3d_main_box{
     height: 250px ;
   }
+  .hero_image_wrapper {
+    z-index: 50;
+  }
 }
