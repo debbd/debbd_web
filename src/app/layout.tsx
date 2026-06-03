@@ -37,7 +37,7 @@ export default function RootLayout({
       <body>
         <Suspense>
 
-        <ThemeProvider attribute="class">
+        <ThemeProvider attribute="class" forcedTheme="dark" defaultTheme="dark">
           <Theme
             accentColor="blue"
             grayColor="slate"
