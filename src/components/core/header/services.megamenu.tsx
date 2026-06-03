@@ -1,121 +1,47 @@
-import { SERVICES, SERVICES_SLUGS } from "@deb/constants";
+
+import { getServices } from "@/lib/getServices";
 import { Button } from "@radix-ui/themes";
 import { Gem } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { IconBase } from "react-icons";
-import { FaBullhorn, FaGoogle, FaMousePointer, FaCode } from "react-icons/fa";
-import { HiSpeakerphone } from "react-icons/hi";
 
-type ServicesShowUpDataType = {
-  title: string;
-  link: string;
-  icon: typeof IconBase;
-  bgAndFgColor: string;
-  subItems: {
-    label: string;
-  }[];
-};
 
-const SERVICE_SHOW_UP_DATA: ServicesShowUpDataType[] = [
-  {
-    title: "SEO (Search Engine Optimization)",
-    link: "/services/seo",
-    icon: HiSpeakerphone,
-    bgAndFgColor: "bg-blue-100 text-blue-900",
-    subItems: [
-      { label: "Audit SEO" },
-      { label: "OnPage SEO" },
-      { label: "OffPage SEO/BackLinks" },
-      { label: "Technical SEO" },
-      { label: "E-Commerce" },
-    ],
-  },
-  {
-    title: "SMM (Social Media Marketing)",
-    link: "/services/smm",
-    icon: FaBullhorn,
-    bgAndFgColor: "bg-pink-100 text-pink-900",
-    subItems: [
-      { label: "Digital Marketing Strategy Development" },
-      { label: "Social Media Brand Management" },
-      { label: "Social Media Advertising" },
-      { label: "SMM Content/Creative Management" },
-      { label: "Marketing Analytics" },
-      { label: "Email Marketing" },
-    ],
-  },
-  {
-    title: "Google Ads",
-    link: "/services/google-ads",
-    icon: FaGoogle,
-    bgAndFgColor: "bg-yellow-100 text-yellow-900",
-    subItems: [
-      { label: "Google Search Ads" },
-      { label: "Google Display Ads" },
-      { label: "Google Ads Remarketing" },
-      { label: "Programmatic Advertising" },
-      { label: "Dynamic Search Ads" },
-    ],
-  },
-  {
-    title: "PPC Ads (Pay Per Click)",
-    link: "/services/ppc",
-    icon: FaMousePointer,
-    bgAndFgColor: "bg-green-100 text-green-900",
-    subItems: [
-      { label: "Ecommerce PPC" },
-      { label: "SEM (Search Engine Marketing)" },
-      { label: "Performance Max PPC" },
-      { label: "Google Shopping PPC" },
-      { label: "Responsive Search PPC" },
-    ],
-  },
-  {
-    title: "Web Design & Development",
-    link: "/services/web-development",
-    icon: FaCode,
-    bgAndFgColor: "bg-purple-100 text-purple-900",
-    subItems: [
-      { label: "Branding Website" },
-      { label: "Custom Website Development" },
-      { label: "WordPress Website Design" },
-      { label: "E-Commerce Website Development" },
-      { label: "Software Solutions" },
-    ],
-  },
-];
-
-export const ServicesMegaMenu = () => {
+export const ServicesMegaMenu = async () => {
+  const services = await getServices()
+  console.log(services)
   return (
     <div className="secondary-layout-width w-full mx-auto h-[550px] flex justify-center items-start px-5 max-[774px]:flex-col">
       <div className="w-full p-2 h-full">
         <div className="w-full h-full grid to-background-925C  rounded-10C grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-10 p-5 overflow-y-auto hide-scrollbar max-[1086px]:grid-cols-1!">
-          {SERVICE_SHOW_UP_DATA.map((item, i) => {
-            const Icon = item.icon;
+          {services.map((item, i) => {
+
             return (
               <div key={i}>
                 <div className="flex justify-start items-start gap-3">
                   <div
-                    className={`w-[30px] h-[30px] rounded-5C flex justify-center items-center ${item.bgAndFgColor} shrink-0`}
+                    className={`w-[30px] h-[30px] rounded-5C flex justify-center items-center border border-brdcolor-800C bg-background-900C shrink-0`}
                   >
-                    <Icon size={18} />
+                    <Image
+                      src={item.icon?.asset.url ?? ""}
+                      alt={item.name}
+                      width={32}
+                      height={32}
+                    />
                   </div>
-                  <Link href={item.link}>
+                  <Link href={item.slug.current}>
                     <h3 className="text-read-16 font-450 hover:underline underline-offset-4">
-                      {item.title}
+                      {item.name}
                     </h3>
                   </Link>
                 </div>
                 <div className="pl-11 mt-2 leading-7">
-                  {item.subItems.map((subItem, j) => {
+                  {item?.tags?.map((subItem, j) => {
                     return (
                       <div
                         key={j}
                         className="text-read-14 font-450 text-foreground-2"
                       >
-                        {subItem.label}
+                        {subItem}
                       </div>
                     );
                   })}

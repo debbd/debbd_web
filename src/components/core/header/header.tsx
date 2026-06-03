@@ -1,5 +1,3 @@
-"use client";
-import { Button } from "@radix-ui/themes";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -12,21 +10,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui";
-import dynamic from "next/dynamic";
-
-const DynamicServicesMegaMenu = dynamic(
-  () => import("./services.megamenu").then((mod) => mod.ServicesMegaMenu),
-  {
-    ssr: false,
-  }
-);
-
-const DynamicCompanyMegaMenu = dynamic(
-  () => import("./company.megamenu").then((mod) => mod.CompanyMegaMenu),
-  {
-    ssr: false,
-  }
-);
+import { ServicesMegaMenu } from "./services.megamenu"
+import { HeaderAuthButtons } from "./HeaderAuthButtons";
+import { CompanyMegaMenu } from "./company.megamenu";
 
 type HeaderLinkType = {
   label: string;
@@ -37,22 +23,12 @@ type HeaderLinkType = {
 
 const HEADER_LINKS: HeaderLinkType[] = [
   {
-    label: "Services",
-    isMegaMenu: true,
-    MegaMenuComponent: <DynamicServicesMegaMenu />,
-  },
-  {
     label: "Blogs",
     slug: "blogs",
   },
   {
     label: "Portfolio",
     slug: "portfolio",
-  },
-  {
-    label: "Company",
-    isMegaMenu: true,
-    MegaMenuComponent: <DynamicCompanyMegaMenu />,
   },
   {
     label: "Contact",
@@ -78,51 +54,43 @@ export const Header = () => {
           <nav>
             <NavigationMenu>
               <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>
+                    Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="!rounded-15C">
+                    <ServicesMegaMenu />
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
                 {HEADER_LINKS.map((item, i) => {
                   return (
-                    <NavigationMenuItem>
-                      {item.isMegaMenu ? (
-                        <>
-                          <NavigationMenuTrigger>
-                            {item.label}
-                          </NavigationMenuTrigger>
-                          <NavigationMenuContent className="!rounded-15C">
-                            {item.MegaMenuComponent && item.MegaMenuComponent}
-                          </NavigationMenuContent>
-                        </>
-                      ) : (
-                        <NavigationMenuLink
-                          asChild
-                          className={navMenuTriggerStyle}
-                        >
-                          <Link href={`${item.slug ?? "#"}`}>{item.label}</Link>
-                        </NavigationMenuLink>
-                      )}
+                    <NavigationMenuItem key={i}>
+
+                      <NavigationMenuLink
+                        asChild
+                        className={navMenuTriggerStyle}
+                      >
+                        <Link href={`${item.slug ?? "#"}`}>{item.label}</Link>
+                      </NavigationMenuLink>
+
                     </NavigationMenuItem>
                   );
                 })}
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>
+                    Company
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="!rounded-15C">
+                    <CompanyMegaMenu />
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </nav>
         </div>
-        <div className="flex shrink-0 items-center justify-end gap-4">
-          <button className=" !text-read-14 !rounded-8C !text-default-white !cursor-pointer !px-0 !py-0 !font-medium !transition-colors">
-            Book a meeting
-          </button>
-          <div className="flex justify-center items-center gap-4">
-            <button className=" !text-read-14 !rounded-8C !text-default-white !cursor-pointer !px-0 !py-0 !font-medium !transition-colors">
-              Login
-            </button>
-            <Button
-              size={"2"}
-              variant="solid"
-              radius="full"
-              className="!text-read-14 !bg-blue-600 hover:!bg-blue-700  !cursor-pointer !px-4 !py-1.5 !font-medium !transition-colors"
-            >
-              Signup
-            </Button>
-          </div>
-        </div>
+        <HeaderAuthButtons />
       </div>
     </header>
   );

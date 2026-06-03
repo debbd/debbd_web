@@ -1,74 +1,77 @@
-// app/contact/ContactForm.tsx
 "use client"
 
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Send } from "lucide-react"
-import { useState } from "react"
-import { Button } from "@radix-ui/themes"
+import { PhoneCodeInput } from "@/components/contact"
+import { Field, FieldGroup, FieldLabel, Input, Textarea } from "@/components/ui"
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group"
+import { ServiceItem } from "@/lib/getServices"
+import { client } from "@/sanity/client"
+import { Button, Checkbox } from "@radix-ui/themes"
+import { useEffect, useState } from "react"
 
-export default function ContactForm() {
-  const [loading, setLoading] = useState(false)
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setLoading(true)
-    // your submit logic here
-    setLoading(false)
-  }
+export const ContactForm = () => {
+    const [services, setServices] = useState<ServiceItem[]>([])
 
-  return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+  useEffect(() => {
+    client.fetch<ServiceItem[]>(`*[_type == "service"] {
+      name,
+      slug,
+    }`).then(setServices)
+  }, [])
+    return <div className="w-full">
+        <FieldGroup>
 
-      <div className="flex flex-col gap-1.5">
-        <Label htmlFor="fname">First name</Label>
-        <Input id="fname" name="fname" placeholder="John" required />
-      </div>
+            <div className="grid grid-cols-2 gap-4">
 
-      <div className="flex flex-col gap-1.5">
-        <Label htmlFor="lname">Last name</Label>
-        <Input id="lname" name="lname" placeholder="Doe" required />
-      </div>
+                <Field>
+                    <FieldLabel htmlFor="first_name" >First Name</FieldLabel>
+                    <Input placeholder="Jhon" required id="first_name" className="backdrop-blur-sm" />
+                </Field>
 
-      <div className="flex flex-col gap-1.5">
-        <Label htmlFor="email">Email address</Label>
-        <Input id="email" name="email" type="email" placeholder="john@example.com" required />
-      </div>
+                <Field>
+                    <FieldLabel htmlFor="last_name">Last Name</FieldLabel>
+                    <Input placeholder="Doe" required id="last_name" className="backdrop-blur-sm" />
+                </Field>
+            </div>
 
-      <div className="flex flex-col gap-1.5">
-        <Label htmlFor="phone">Phone number</Label>
-        <Input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
-      </div>
+            <Field>
+                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <Input placeholder="jhondoe@gmail.com" required id="email" className="backdrop-blur-sm" />
+            </Field>
 
-      
+            <Field>
+                <FieldLabel htmlFor="phone">Phone number</FieldLabel>
+                <InputGroup className="h-9! backdrop-blur-sm"  >
+                    <InputGroupInput id="phone" placeholder="your number" />
+                    <InputGroupAddon align="inline-start">
+                        <PhoneCodeInput />
+                    </InputGroupAddon>
+                </InputGroup>
 
-      <div className="col-span-2 flex flex-col gap-1.5">
-        <Label htmlFor="message">Message</Label>
-        <Textarea
-          id="message"
-          name="message"
-          placeholder="Tell us about your project..."
-          rows={10}
-          className="resize-y"
-          required
-        />
-      </div>
+            </Field>
 
-      <div className="col-span-2 mt-1">
-        <Button type="submit" disabled={loading} size={"3"} variant="solid" radius="full" className="!bg-blue-600 hover:!bg-blue-700">
-          <Send size={15} />
-          {loading ? "Sending..." : "Send message"}
-        </Button>
-      </div>
+            <Field>
+                <FieldLabel htmlFor="message">Message</FieldLabel>
+                <Textarea placeholder="Leave us a message" rows={6} />
+            </Field>
 
-    </form>
-  )
+            <Field>
+                <FieldLabel htmlFor="service">Services</FieldLabel>
+                {
+                    services.map((item, i) => {
+                        return <Field orientation="horizontal" key={i}>
+                            <Checkbox id={item.slug.current} color="blue" variant="surface" />
+                            <FieldLabel htmlFor={item.slug.current}>{item.name}</FieldLabel>
+                        </Field>
+                    })
+                }
+
+            </Field>
+
+            <Field>
+                <Button variant="surface" color="blue" size={"2"}>Send Message</Button>
+            </Field>
+
+        </FieldGroup>
+    </div>
 }
