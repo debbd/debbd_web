@@ -50,16 +50,19 @@ function NavigationMenuItem({
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Item>) {
   return (
+   
+      
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
       className={cn("relative", className)}
       {...props}
-    />
+      />
+   
   );
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex w-max items-center justify-center rounded-full bg-transparent !text-foreground-2 px-4 py-1.5 text-read-14 font-medium hover:bg-background-900C hover:text-foreground  disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:!text-foreground data-[state=open]:bg-background-850C outline-none transition-[color,box-shadow]"
+  "group inline-flex w-max items-center justify-center rounded-full  bg-transparent !text-foreground-2 px-4 py-1.5 text-read-14 font-medium  hover:text-foreground  disabled:pointer-events-none disabled:opacity-50 data-[state=open]:!text-foreground  outline-none transition-[color,box-shadow] group"
 );
 
 function NavigationMenuTrigger({
@@ -73,6 +76,7 @@ function NavigationMenuTrigger({
       className={cn(navigationMenuTriggerStyle(), "group", className)}
       {...props}
     >
+       <div className="pointer-events-none absolute rounded-full opacity-0 group-data-[state=open]:opacity-60 inset-0  mix-blend-soft-light bg-noise" />
       {children}{" "}
       <ChevronDownIcon
         className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -129,7 +133,8 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+            
+        " hover:text-white! focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

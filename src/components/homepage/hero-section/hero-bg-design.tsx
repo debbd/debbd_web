@@ -2,7 +2,7 @@ import React from "react";
 
 export const HeroBgDesign = () => {
   return (
-    <div className="absolute top-0 left-0 -z-[1] flex w-full items-start justify-end h-[800px]">
+    <div className="absolute top-0 left-0 -z-[1] flex w-full max-[870px]:w-[850px] items-start justify-end h-[800px]">
       <div className="relative h-full w-[90px] shrink-0 bg-gradient-to-r from-[#2564eb20] via-transparent to-transparent">
         <div className="absolute z-10 h-full w-full backdrop-blur-3xl"></div>
         <div className="to-background-950C absolute bottom-0 z-10 h-full max-h-[600px] w-full bg-gradient-to-b from-transparent"></div>
