@@ -53,7 +53,7 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      <div className="px-5 mt-20 mb-40 max-[900px]:mb-28 max-[540px]:mt-14 max-[540px]:mb-14 max-[540px]:relative max-[540px]:z-[9999]">
+      <div className="px-5 mt-20 mb-40 max-[900px]:mb-28 max-[540px]:mt-14 max-[540px]:mb-14 ">
         <div className="flex justify-start items-start gap-10 w-fit max-[900px]:flex-col max-[900px]:gap-5!">
           <p className="text-read-14 text-foreground-4 shrink-0 font-medium">
             Trusted by industry leaders <br />
@@ -101,7 +101,7 @@ export const HeroSection = () => {
             orientation="vertical"
             className="!w-[0.5px] !h-[60px] !bg-background-800C max-[900px]:h-[1px]! max-[900px]:w-full! max-[900px]:hidden"
           />
-          <div>
+          <div className="max-[540px]:relative max-[540px]:z-[9999]">
             <div className="flex justify-start items-center gap-2">
               <Star size={16} className="text-foreground fill-foreground" />
               <span className="text-read-14 font-medium">4.8</span>
