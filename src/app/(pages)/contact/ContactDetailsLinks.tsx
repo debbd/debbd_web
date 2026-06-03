@@ -19,15 +19,15 @@ const CONTACT_LINKS: LinksWithIcons[] = [
     },
     {
         label: "WhatsApp",
-        url: "https://wa.me/8801958632448?text=Hello%2C%20I%20want%20to%20discuss%20a%20project",
+        url: "https://wa.me/8801958909334?text=Hello%2C%20I%20want%20to%20discuss%20a%20project",
         icon: WhatsApp
     }
 ]
 
 const CONTACT_NUMBERS: LinksWithIcons[] = [
     {
-        label: "(+880) 1958-632448",
-        url: "tel:+8801958632448",
+        label: "(+880) 1958-909334",
+        url: "tel:+8801958909334",
         icon: Phone
     }
 ]
