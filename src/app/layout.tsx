@@ -9,6 +9,7 @@ import { ThemeProvider } from "next-themes";
 import { HeaderProvider } from "@/components/core/header";
 import { GlobalProvider } from "@/components/globalProvider";
 import { Footer } from "@/components/core/Footer";
+import { Suspense } from "react";
 
 
 
@@ -34,6 +35,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
+        <Suspense>
+
         <ThemeProvider attribute="class">
           <Theme
             accentColor="blue"
@@ -49,6 +52,7 @@ export default function RootLayout({
             </GlobalProvider>
           </Theme>
         </ThemeProvider>
+            </Suspense>
       </body>
     </html>
   );
