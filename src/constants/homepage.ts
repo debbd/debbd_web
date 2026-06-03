@@ -31,21 +31,21 @@ type ServicesShowUpDataType = {
 
 export const SERVICE_SHOW_UP_DATA: ServicesShowUpDataType[] = [
   {
-    title: "Search Engine Optimization (SEO)",
-    desc: "Boost your online visibility and reach the right audience with data-driven SEO strategies and impactful social media campaigns that drive engagement and conversions.",
-  },
-  {
-    title: "Social Media Marketing (SMM)",
-    desc: "Boost your online visibility and reach the right audience with data-driven SEO strategies and impactful social media campaigns that drive engagement and conversions.",
-  },
-  {
-    title: SERVICES.BRANDING_STRATEGY,
-    desc: "We help you define your brand voice and create designs that resonate with your target market.",
-  },
-  {
-    title: SERVICES.SOFTWARE,
-    desc: "Turn your ideas into powerful digital solutions. From web apps to enterprise systems, we build scalable, secure software tailored to your business goals.",
-  },
+  title: "Search Engine Optimization (SEO)",
+  desc: "Dominate search results and stay ahead of competitors with advanced SEO solutions that drive sustainable traffic, leads, and revenue."
+},
+{
+  title: "Social Media Marketing (SMM)",
+  desc: "Connect with your audience where they spend their time and turn engagement into measurable business growth through strategic social media marketing."
+},
+{
+  title: "Branding & Strategy",
+  desc: "Build a brand that people remember, trust, and choose. We combine creativity and strategy to position your business for long-term success."
+},
+{
+  title: "Software Development",
+  desc: "From startups to enterprises, we deliver high-performance software solutions that streamline operations, enhance customer experiences, and fuel growth."
+}
 ];
 
 

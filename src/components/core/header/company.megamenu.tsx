@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui";
 import { Button } from "@radix-ui/themes";
 import Image from "next/image";
+import Link from "next/link";
 
 type SocialLinkType = {
   image: string;
@@ -53,9 +54,11 @@ export const CompanyMegaMenu = () => {
           impact.
         </p>
         <div className="mt-5">
-          <Button variant="surface" className="!rounded-5C">
-            About us
-          </Button>
+          <Link href="/page/about-us">
+            <Button variant="surface" className="!rounded-5C">
+              About us
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -109,15 +112,17 @@ export const CompanyMegaMenu = () => {
         <div>
           {LEGALS_LINKS.map((item, i) => {
             return (
-              <div
-                key={i}
-                className="hover:bg-background-800C transition-colors px-3 py-2 cursor-pointer rounded-8C"
-              >
-                <h6 className="text-read-14 font-medium">{item.label}</h6>
-                <p className="text-read-13 text-foreground-3 leading-4 mt-1">
-                  {item.desc}
-                </p>
-              </div>
+              <Link key={i} href={`/page/${item.link}`}>
+                <div
+
+                  className="hover:bg-background-800C transition-colors px-3 py-2 cursor-pointer rounded-8C"
+                >
+                  <h6 className="text-read-14 font-medium">{item.label}</h6>
+                  <p className="text-read-13 text-foreground-3 leading-4 mt-1">
+                    {item.desc}
+                  </p>
+                </div>
+              </Link>
             );
           })}
         </div>

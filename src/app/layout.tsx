@@ -8,6 +8,7 @@ import { Theme } from "@radix-ui/themes";
 import { ThemeProvider } from "next-themes";
 import { HeaderProvider } from "@/components/core/header";
 import { GlobalProvider } from "@/components/globalProvider";
+import { Footer } from "@/components/core/Footer";
 
 
 
@@ -44,6 +45,7 @@ export default function RootLayout({
 
             <HeaderProvider />
             {children}
+            <Footer/>
             </GlobalProvider>
           </Theme>
         </ThemeProvider>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge, Button } from "@radix-ui/themes";
-import { Code } from "lucide-react";
+import { Code, Phone } from "lucide-react";
 import Image from "next/image";
 import { SOFTWARE_SERVICE_DETAILS } from "@/constants";
 
@@ -42,8 +42,8 @@ export const SoftwareSection = () => {
               </ul>
               <div className="max-[1000px]:flex max-[1000px]:justify-center">
 
-              <Button variant="soft" color="purple" radius="full" >
-                Talk To Us
+              <Button variant="soft" color="purple" radius="full" size={"3"} >
+               <Phone size={18} /> Talk To Us
               </Button>
               </div>
             </div>

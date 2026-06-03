@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import { HeroBgDesign } from "./hero-bg-design";
 import { Button } from "@radix-ui/themes";
 import Image from "next/image";
@@ -7,8 +8,21 @@ import { Star } from "lucide-react";
 import Link from "next/link";
 import { Hero3DLayout } from "./hero-3d-layout";
 import { COMPANY_IMAGES } from "@/constants";
+import { useRouter } from "next/navigation";
 
 export const HeroSection = () => {
+  const router = useRouter();
+  const [getEmail, setGetEmail] = useState("")
+
+  const pushWithEmail = (email: string) => {
+    if (email.trim() !== "") {
+      router.push(`/contact?email=${encodeURIComponent(email)}`)
+      return
+    }
+
+    router.push("/contact")
+  }
+
   return (
     <div className=" global-layout-width relative mx-auto w-full overflow-hidden">
       <HeroBgDesign />
@@ -34,9 +48,11 @@ export const HeroSection = () => {
             <input
               type="text"
               placeholder="youremail@gmail.com"
+              onChange={(e) => setGetEmail(e.target.value)}
               className="placeholder:text-foreground-3 text-read-15 w-full max-w-[300px] border-none px-3 py-2.5 font-medium outline-none placeholder:font-normal max-[900px]:py-2 max-[540px]:hidden"
             />
             <Button
+              onClick={() => pushWithEmail(getEmail)}
               className="!text-read-15 !text-default-white mr-1 shrink-0 !cursor-pointer !bg-blue-600 !px-5 !py-5 !font-medium !transition-colors hover:!bg-blue-700 max-[900px]:py-4.5!"
               radius="full"
             >
@@ -107,11 +123,7 @@ export const HeroSection = () => {
               <span className="text-read-14 font-medium">4.8</span>
             </div>
             <p className="text-read-13 text-foreground-3 leading-4 mt-2">
-              Positive ratings by pulse user <br /> around the world! Check the
-              review{" "}
-              <Link href={"#"} className="text-foreground-2 hover:underline">
-                here!
-              </Link>
+              Positive ratings by pulse user <br /> around the world!
             </p>
           </div>
         </div>

@@ -9,20 +9,15 @@ import {
     SlideTransition,
 } from "@/components/ui"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ServiceItem } from "@/lib/getServices"
 import { Facebook, LinkedIn } from "@/components/ui/icons"
+import { usePathname, useRouter } from "next/navigation"
 
 
 type View = "main" | "services" | "company"
 
-const COMPANY_LINKS = [
-    { label: "About Us", href: "/about" },
-    { label: "Careers", href: "/careers" },
-    { label: "Team", href: "/team" },
-    { label: "Press", href: "/press" },
-]
 
 const NoiseButton = ({ children, ...props }: React.ComponentProps<"div"> & { children: React.ReactNode }) => {
     return <div className="relative" {...props}>
@@ -37,17 +32,25 @@ export const MobileMenu = ({ services }: { services: ServiceItem[] }) => {
 
     const [view, setView] = useState<View>("main")
     const [direction, setDirection] = useState<1 | -1>(1)
+    const router = useRouter()
+
+    const [open, setOpen] = useState<boolean>(false)
+    const path_name = usePathname()
 
     const navigate = (to: View, dir: 1 | -1) => {
         setDirection(dir)
         setView(to)
     }
 
+    useEffect(() => {
+        setOpen(false);
+    }, [path_name])
+
     return <nav className="hidden max-[900px]:flex justify-center items-center w-fit">
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger>
                 <Button variant="ghost" color="gray">
-                    <Equal size={24} />
+                    <Equal size={28} />
                 </Button>
             </SheetTrigger>
             <SheetContent className="bg-transparent! backdrop-blur-xl overflow-x-hidden overflow-y-auto">
@@ -70,13 +73,18 @@ export const MobileMenu = ({ services }: { services: ServiceItem[] }) => {
                                     <NoiseButton onClick={() => navigate("services", 1)}>
                                         Services <ChevronRight size={18} />
                                     </NoiseButton>
-                                    <NoiseButton>
+
+                                    <NoiseButton onClick={() => router.push("/blogs")}>
                                         Blogs
                                     </NoiseButton>
-                                    <NoiseButton>
+
+
+
+                                    <NoiseButton onClick={() => router.push("/portfolio")}>
                                         Portfolio
                                     </NoiseButton>
-                                    <NoiseButton>
+
+                                    <NoiseButton onClick={() => router.push("/contact")}>
                                         Contact
                                     </NoiseButton>
                                     <NoiseButton onClick={() => navigate("company", 1)}>
@@ -137,9 +145,11 @@ export const MobileMenu = ({ services }: { services: ServiceItem[] }) => {
                                                 impact.
                                             </p>
                                             <div className="mt-5">
-                                                <Button variant="surface" className="rounded-5C! font-geist-sans! px-3! py-1!" color="blue">
-                                                    About us
-                                                </Button>
+                                                <Link href="/page/about-us">
+                                                    <Button variant="surface" className="rounded-full! font-geist-sans! px-3! py-1!" color="blue">
+                                                        About us
+                                                    </Button>
+                                                </Link>
                                             </div>
 
                                             <h5 className="text-read-15 text-foreground font-medium  my-5 border-t border-brdcolor-800C pt-5">
@@ -176,18 +186,23 @@ export const MobileMenu = ({ services }: { services: ServiceItem[] }) => {
 
                 <SheetFooter>
                     <div className="w-full flex-1">
-                        <Button radius="full" size={"2"} color="gray" variant="soft" className="flex-1! w-full! py-2! rounded-full! font-geist-sans!">
+                        <Link href="/contact">
+                            <Button radius="full" size={"2"} color="blue" variant="classic" className="flex-1! w-full! py-2! rounded-full! !bg-blue-600 hover:!bg-blue-700 font-geist-sans!">
+                                Book a meeting
+                            </Button>
+                            {/* <Button radius="full" size={"2"} color="gray" variant="soft" className="flex-1! w-full! py-2! rounded-full! font-geist-sans!">
                             Book a meeting
-                        </Button>
+                        </Button> */}
+                        </Link>
                     </div>
-                    <div className="flex justify-center items-center gap-2">
+                    {/* <div className="flex justify-center items-center gap-2">
                         <Button radius="full" size={"2"} color="blue" variant="classic" className="flex-1! py-2! rounded-full! !bg-blue-600 hover:!bg-blue-700 font-geist-sans!">
                             Signup
                         </Button>
                         <Button radius="full" size={"2"} color="blue" variant="surface" className="flex-1! py-2! rounded-full! font-geist-sans!">
                             Login
                         </Button>
-                    </div>
+                    </div> */}
                 </SheetFooter>
             </SheetContent>
         </Sheet>

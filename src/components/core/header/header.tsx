@@ -74,7 +74,7 @@ export const Header = async () => {
                         asChild
                         className={navMenuTriggerStyle}
                       >
-                        <Link href={`${item.slug ?? "#"}`}>{item.label}</Link>
+                        <Link href={`/${item.slug ?? "#"}`}>{item.label}</Link>
                       </NavigationMenuLink>
 
                     </NavigationMenuItem>

@@ -9,6 +9,13 @@ type ArchivePagePropsType = {
   params: Promise<{ slug: string }>;
 };
 
+export async function generateStaticParams() {
+  const slugs = await client.fetch<{ slug: string }[]>(
+    `*[_type == "category" && defined(slug.current)]{ "slug": slug.current }`
+  )
+  return slugs.map(({ slug }) => ({ slug }))
+}
+
 export default async function ArchivePage({ params }: ArchivePagePropsType) {
   const { slug } = await params;
   const [posts, categories] = await Promise.all([
