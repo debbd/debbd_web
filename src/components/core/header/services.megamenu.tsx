@@ -19,13 +19,14 @@ export const ServicesMegaMenu = async () => {
               <div key={i}>
                 <div className="flex justify-start items-start gap-3">
                   <div
-                    className={`w-[30px] h-[30px] rounded-5C flex justify-center items-center border border-brdcolor-800C bg-background-900C shrink-0`}
+                    className={`w-[30px] h-[30px] rounded-5C flex overflow-hidden justify-center items-center border border-brdcolor-800C bg-background-900C shrink-0`}
                   >
                     <Image
-                      src={item.icon?.asset.url ?? ""}
+                      src={item.icon ?? ""}
                       alt={item.name}
-                      width={32}
-                      height={32}
+                      width={100}
+                      height={100}
+                      className="object-cover object-center"
                     />
                   </div>
                   <Link href={item.slug.current}>

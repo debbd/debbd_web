@@ -5,7 +5,7 @@ export interface ServiceItem {
     name: string
     slug: { current: string }
     tags: string[]
-    icon: { asset: { url: string } } | null 
+    icon: string | null 
 }
 
 export const getServices = unstable_cache(
